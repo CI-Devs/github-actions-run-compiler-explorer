@@ -45,10 +45,10 @@ jobs:
              if($HTMLFile -match "https://"){ $str = ((Select-String '(ftp|ftps|sftp|http|https)://(\S)*' -Input $HTMLFile).Matches.Value); $OldURL = ($str -replace ".$") }
              if($OldURL){ 
                $HTMLFile.replace($OldURL, $URLString)
-               Set-Content -Path $HTMLFileName -Value $HTMLFile
-               git add $HTMLFileName
-               git commit --amend --no-edit
-               git push --force
+               Set-Content -Path $HTMLFileName -Value $HTMLFile -Force
+               git add ./index.html
+               git commit -m "Change url to $OldURL"
+               git push
              }
              Get-Content $pwd\out.txt
              Get-Content $pwd\err.txt

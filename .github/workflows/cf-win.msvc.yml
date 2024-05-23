@@ -44,10 +44,9 @@ jobs:
              $HTMLFile = Get-Content $HTMLFileName
              if($HTMLFile -match "https://"){ $str = ((Select-String '(ftp|ftps|sftp|http|https)://(\S)*' -Input $HTMLFile).Matches.Value); $OldURL = ($str -replace ".$") }
              if($OldURL){ 
-               $HTMLFile.replace($OldURL, $URLString)
-               Set-Content -Path $HTMLFileName -Value $HTMLFile -Force
-               git add ./index.html
-               git commit -m "Change url to $OldURL"
+               Set-Content -Path $HTMLFileName -Value ($HTMLFile -replace $OldURL, $URLString) -Force
+               git add $HTMLFileName
+               git commit -m "Change url to $URLString"
                git push
              }
              Get-Content $pwd\out.txt

